@@ -11,14 +11,20 @@
 <body>
   <noscript><div class="js_inactive">Bitte aktiviere Javaskript in deinem Browser!</div></noscript>
   <div class="web-body-001">
-    <h1>Witze</h1>
+    <h1 id="t"></h1>
     <div class="info-01"><img src="../img/info.png"></img><p class="content" id="msg">...</p></div>
 <p>Information auf Li2424's Webseite</p>
 </div>
 </body>
 <script>
 const msgobj = document.querySelector('#msg');
-msgobj.innerText = param('msg');
+const titleobj = document.querySelector('#t');
+msgobj.innerHTML = param('msg');
+var title = param('title');
+if (title == null) {
+title = "Information";
+}
+titleobj.innerHTML = title;
 function param(name) {
 return new URL(window.location.href).searchParams.get(name);
 }
