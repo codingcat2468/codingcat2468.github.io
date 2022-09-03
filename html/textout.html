@@ -25,7 +25,7 @@
 <script>
   const msgobj = document.querySelector('#msg');
   const titleobj = document.querySelector('#t');
-msgobj.innerText = param('msg').replace('\\n', '\n');
+msgobj.innerText = param('msg').replaceAll('\\n', '\n');
   var title = param('title');
   if (title == null) {
     title = "Information";
