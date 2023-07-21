@@ -1,0 +1,42 @@
+/*Created by Li2424 19.11.2021*/
+
+.tech-project .title {
+  color: var(--theme-navbar-text-color);
+}
+
+.projects-list {
+  display: flex;
+  margin-top: 24px;
+}
+
+.tech-project {
+  background-color: var(--theme-primary-color);
+  border-radius: 12px;
+  padding: 12px;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.tech-project .project-image {
+  width: 100%;
+  height: 300px;
+}
+
+.tag {
+  font-size: 12px;
+}
+
+.project-tags {
+  display: flex;
+  margin-bottom: 12px;
+  margin-top: -16px;
+}
+
+.project-tags div {
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+.project-demo-img {
+  margin-right: 6px;
+}

@@ -1,0 +1,47 @@
+{
+    "name": "\"MyFi LCD\" - WiFi controllable RGB backlight LCD",
+    "tags": [
+        "WiFi",
+        "Android",
+        "Arduino",
+        "Fun"
+    ],
+    "materials": [
+        {
+            "name": "Arduino Uno WiFi Rev 2",
+            "url": "https://store.arduino.cc/products/arduino-uno-wifi-rev2?queryID=32d70ed1da60e3e4750768d327b8e154"
+        },
+        {
+            "name": "Waveshare LCD1602 RGB Module, 16x2 Characters LCD, RGB Backlight, 3.3V/5V, I2C Bus",
+            "url": "https://www.waveshare.com/lcd1602-rgb-module.htm"
+        }
+    ],
+    "description": "The \"MyFi\" LCD is an LCD which you can control with your phone over your WiFi. You can type any text (limited to 16 characters in every line) into the 2 lines of the LCD.<br>You also can choose the background light color of the LCD with 3 sliders: red, green and blue. In the app is a color preview over the sliders. The Arduino with the LCD <u><b>has to be connected to the same network as your phone!</b></u><br>You also need to make sure you have all libraries installed: This project requires Arduino's WiFiNINA library for WiFi connection on this specific board and also the library for the display provided by Waveshare.<br>You can find instructions on how to install the display library <a href=\"https://www.waveshare.com/wiki/LCD1602_RGB_Module#Library_file_loading_for_Arduino\">here</a>. To control the LCD with HTTP, you can send a HTTP POST request to <i>http://[ip adress of board]/api/set/txt/[text]</i> to set the first line. For the second line, replace txt with txt2.<br>For setting the display's color, you can send a request to <i>/api/set/color/[hex]</i>. The <i>hex</i> parameter is just a normal HTML color value without a # in front of it.<br>I'll upload the code for the android app soon. Have fun!",
+    "circuit": "Plug the cable from the LCD into it and connect the cables to the arduino board by using the labels on the display:\nLCD Vcc -> Arduino 3.3V\nLCD GND - > Arduino GND\nLCD SCL -> Arduino SCL\nLCD SDA -> Arduino SDA",
+    "code": [
+        "https://github.com/Li2424/MyFiLCD"
+    ],
+    "demonstration": [
+        {
+            "type": "image",
+            "id": [
+                "tech_proj",
+                "myfi-lcd-1.jpg"
+            ]
+        },
+        {
+            "type": "image",
+            "id": [
+                "tech_proj",
+                "myfi-lcd-2.jpg"
+            ]
+        },
+        {
+            "type": "image",
+            "id": [
+                "tech_proj",
+                "myfi-lcd-3.jpg"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "arduino": [
+        {
+            "id": "myfi-lcd",
+            "name": "\"MyFi LCD\" - WiFi controllable RGB backlight LCD",
+            "image": [
+                "tech_proj",
+                "myfi-lcd-1.jpg"
+            ]
+        }
+    ]
+}
