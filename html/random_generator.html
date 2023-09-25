@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <title>Zufall</title>
+    <style>
+      body {
+  background-color: black;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+  transition-duration: 1.2s;
+}
+
+.result {
+  font-size: 64px;
+  animation-name: show;
+  animation-duration: 0.8s;
+  animation-iteration-count: 1;
+}
+
+.request {
+  rotate: 0deg;
+  border: 2px solid deepskyblue;
+  border-radius: 24px;
+  background-color: deepskyblue;
+  padding: 24px;
+  font-size: 60px;
+  animation-name: showbtn;
+  animation-duration: 1.2s;
+  animation-iteration-count: 1;
+}
+
+.request:hover {
+  padding: 30px;
+  background-color: lightblue;
+  font-size: 70px;
+  border: 2px solid lightblue;
+  rotate: 6deg;
+}
+
+.smooth {
+  transition-duration: 0.4s;
+}
+
+@keyframes go {
+  from { opacity: 1.0; padding: 30px; rotate: 6deg; }
+  to { opacity: 0.0; padding: 100px; rotate: 360deg; background-color: white; color: white; }
+}
+
+@keyframes showbtn {
+  from { opacity: 0.0; padding: 60px; rotate: 360deg; }
+  to { opacity: 1.0; padding: 24px; rotate: 0deg; }
+}
+
+@keyframes show {
+  from { opacity: 0.0; font-size: 1px; }
+  to { opacity: 1.0; font-size: 64px; }
+}
+
+@keyframes hide {
+  from { opacity: 1.0; font-size: 64px; }
+  to { opacity: 0.0; font-size: 1px; }
+}
+
+.goanim {
+  animation-name: go;
+  animation-duration: 1.2s;
+  animation-iteration-count: 1;
+}
+
+
+.hideanim {
+  animation-name: hide;
+  animation-duration: 1.2s;
+  animation-iteration-count: 1;
+}
+    </style>
+  </head>
+  <body>
+    <h1>Zufall</h1>
+    <span class="result">...</span>
+    <br>
+    <button class="request smooth">?</button>
+  </body>
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', (e) => {
+  const req_btn = document.querySelector('.request');
+  const result = document.querySelector('.result');
+  result.style.display = 'none';
+  req_btn.style.display = '';
+  req_btn.addEventListener('click', (e) => {
+    req_btn.classList.add('goanim');
+    document.body.style.backgroundColor = 'white';
+    setTimeout(() => {
+      var text = random();
+      result.innerText = text;
+      result.style.display = '';
+      req_btn.style.display = 'none';
+      document.body.style.backgroundColor = 'black';
+      setTimeout(() => {
+        req_btn.classList.remove('goanim');
+        result.classList.add('hideanim');
+        setTimeout(() => {
+          result.style.display = 'none';
+          req_btn.style.display = '';
+          result.classList.remove('hideanim');
+        },1180);
+      }, 2468)
+    }, 1180)
+  });
+});
+
+function random() {
+  var values = ['No!', 'Yes', '...', 'Maybe',  'No!', 'Not really...', 'What?'];
+  var rand = randomInt(0, values.length - 1);
+  
+  return values[rand];
+}
+
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+  </script>
+</html>
