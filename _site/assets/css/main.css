@@ -27,7 +27,7 @@ li > ul, li > ol { margin-bottom: 0; }
 h1, h2, h3, h4, h5, h6 { font-weight: 600; }
 
 /** Links */
-a { color: #ff5100; text-decoration: none; }
+a { color: #046ffa; text-decoration: none; }
 a:hover { text-decoration: underline; }
 .social-media-list a:hover { text-decoration: none; }
 .social-media-list a:hover .username { text-decoration: underline; }
@@ -69,15 +69,15 @@ table td { border: 1px solid #dddddd; }
 /** Horizontal center */
 /** Center background image */
 /** Text Selection */
-::selection { color: inherit; background-color: rgba(0, 174, 255, 0.3); }
+::selection { color: inherit; background-color: rgba(251, 144, 5, 0.3); }
 
-::-moz-selection { /* Code for Firefox */ color: inherit; background-color: rgba(0, 174, 255, 0.3); }
+::-moz-selection { /* Code for Firefox */ color: inherit; background-color: rgba(251, 144, 5, 0.3); }
 
-::-ms-selection { color: inherit; background-color: rgba(0, 174, 255, 0.3); }
+::-ms-selection { color: inherit; background-color: rgba(251, 144, 5, 0.3); }
 
-::-o-selection { color: inherit; background-color: rgba(0, 174, 255, 0.3); }
+::-o-selection { color: inherit; background-color: rgba(251, 144, 5, 0.3); }
 
-::-webkit-selection { color: inherit; background-color: rgba(0, 174, 255, 0.3); }
+::-webkit-selection { color: inherit; background-color: rgba(251, 144, 5, 0.3); }
 
 /** Animation for transparent header */
 html[data-header-transparent] header.site-header { position: fixed; }
@@ -119,8 +119,8 @@ html[data-scroll-status='down'] .framework .sidebar { top: 20px; }
 /** Site footer */
 .site-footer { font-size: 14px; color: #404040; background-color: #f2f2f2; text-align: left; transition: background-color 0.2s; }
 .site-footer .site-footer-inner { transition: border-top 0.2s; padding: 54px 0; }
-.site-footer a { color: #ff5100; }
-.site-footer a:hover { color: #ff7433; }
+.site-footer a { color: #046ffa; }
+.site-footer a:hover { color: #358cfc; }
 
 .copyleft { display: inline-block; transform: rotate(180deg); }
 
@@ -250,7 +250,7 @@ html[data-scroll-status='down'] .framework .sidebar { top: 20px; }
 
 .page-segments .post-badges { bottom: 0.1em; }
 
-.post-badge { display: none; padding: 0px 3px; background-color: #ff5100; color: #fff; font-size: 10px; font-weight: 600; border-radius: 2px; transition-duration: 0.3s; }
+.post-badge { display: none; padding: 0px 3px; background-color: #046ffa; color: #fff; font-size: 10px; font-weight: 600; border-radius: 2px; transition-duration: 0.3s; }
 
 .post-badge.badge-new { display: inline-block; }
 

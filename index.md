@@ -2,4 +2,4 @@
 layout: home
 ---
 
-uhmm
+{{site.description}}
