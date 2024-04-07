@@ -161,12 +161,6 @@ header_pages:
 
 
 # Page default value
-defaults:
-  home:
-    title: "Home"
-    heading: "Codingcat's Website"
-    subheading: "Making stuff for Minecraft, Arduino, and trying to figure out maths."
-    banner: "assets/images/code.png"
 
 # Banner default settings
 # These banner settings are for global banner default, but you can also
