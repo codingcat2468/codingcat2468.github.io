@@ -5,6 +5,10 @@
 <lastmod>2024-04-07T00:00:00+02:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/minecraft/2024/06/22/custom-armor-vanilla.html</loc>
+<lastmod>2024-06-22T00:00:00+02:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about.html</loc>
 </url>
 <url>
@@ -15,5 +19,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tags.html</loc>
 </url>
 </urlset>

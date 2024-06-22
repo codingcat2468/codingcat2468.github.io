@@ -1,4 +1,162 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-04-07T08:51:42+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Codingcat’s Website</title><subtitle>Hi, I&apos;m Codingcat, a german programmer who likes to code stuff for the game Minecraft, build electronic projects with arduino and is trying to have some fun while doing so.</subtitle><author><name>codingcat</name></author><entry><title type="html">GlowingItems</title><link href="http://localhost:4000/minecraft/2024/04/07/glowing-items-plugin.html" rel="alternate" type="text/html" title="GlowingItems" /><published>2024-04-07T00:00:00+02:00</published><updated>2024-04-07T00:00:00+02:00</updated><id>http://localhost:4000/minecraft/2024/04/07/glowing-items-plugin</id><content type="html" xml:base="http://localhost:4000/minecraft/2024/04/07/glowing-items-plugin.html"><![CDATA[<p>GlowingItems is a rather simple but fully customizable plugin that allows items like torches, lanterns, glowstone and many other to emit light when held in the hand or dropped on the floor. It runs on Spigot, Paper, Purpur and similar server softwares in versions 1.20 - 1.20.4.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-06-22T03:34:05+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Codingcat’s Website</title><subtitle>Hi, I&apos;m Codingcat, a young programmer from germany who likes to code stuff for the game Minecraft, build electronic projects with arduino and is trying to have some fun while doing so.</subtitle><author><name>codingcat</name></author><entry><title type="html">Custom armor using datapacks</title><link href="http://localhost:4000/minecraft/2024/06/22/custom-armor-vanilla.html" rel="alternate" type="text/html" title="Custom armor using datapacks" /><published>2024-06-22T00:00:00+02:00</published><updated>2024-06-22T00:00:00+02:00</updated><id>http://localhost:4000/minecraft/2024/06/22/custom-armor-vanilla</id><content type="html" xml:base="http://localhost:4000/minecraft/2024/06/22/custom-armor-vanilla.html"><![CDATA[<p>In this tutorial, I’ll show you all the steps required to create custom armor with just a datapack and resource pack.
+To make this work, we’re going to use armor trims and custom model data.</p>
+
+<h2 id="1-creating-the-datapack">1. Creating the datapack</h2>
+<p>First, we’re going to need a datapack to add the armor trims for our custom armor.
+You can find detailed instructions on how to create a datapack on the <a href="https://minecraft.wiki/w/Tutorials/Creating_a_data_pack">Minecraft Wiki</a>. Follow the steps over there until <em>“Adding content to your pack”</em>.</p>
+
+<p>If you’re done with that, add a folder named <code class="language-plaintext highlighter-rouge">data</code> in your pack folder. In that folder, create another folder and name it however you want. I’ll name mine <code class="language-plaintext highlighter-rouge">my_pack</code>. Make sure that it only contains lowercase letters, numbers, some special characters ( <strong>_</strong>, <strong>-</strong>, <strong>.</strong> ) and NO spaces! Remeber this restriction for any other name you’ll use in this datapack!</p>
+
+<p>Then, add two more folders to the folder you just created: <code class="language-plaintext highlighter-rouge">trim_pattern</code> and <code class="language-plaintext highlighter-rouge">recipes</code>. You won’t need the <code class="language-plaintext highlighter-rouge">recipes</code> folder if you don’t want your armor to be craftable. No we’re done with the general structure of the datapack, so let’s start adding our custom armor!</p>
+
+<h2 id="2-adding-the-armor-trims">2. Adding the armor trims</h2>
+<p>To add custom armor, we are going to create custom <strong>armor trims</strong>. Those armor trims will overlay the vanilla armor completely, making it look like we have entirely different armor. Armor trims consist of two parts: the <strong>pattern</strong> and the <strong>material</strong>. The pattern defines how an armor trim looks like and the material defines the color.</p>
+
+<p>For our custom armor, we’re only going to need a pattern. We don’t need different colors, so we’ll just use one of the vanilla materials later on.
+Open the <code class="language-plaintext highlighter-rouge">trim_pattern</code> folder and create a .json file with the name of your custom armor (for example <code class="language-plaintext highlighter-rouge">copper_armor.json</code>).</p>
+
+<p>Now open the file and add the following data:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"asset_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_pack:my_armor"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"translate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"template_item"</span><span class="p">:</span><span class="w"> </span><span class="s2">"minecraft:barrier"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">asset_id</code> property defines the texture for the armor trim, replace “my_armor” with the name of your custom armor and “custom” with the name of the folder you created earlier in the <code class="language-plaintext highlighter-rouge">data</code> folder. We’ll call this folder the <strong>namespace</strong> from now on. Make sure to use the same name <strong>for your armor</strong> everywhere! The <code class="language-plaintext highlighter-rouge">translate</code> property in <code class="language-plaintext highlighter-rouge">description</code> sets the name of your armor trim that will be displayed in the inventory. We’re not going to need a name, so just leave it empty.</p>
+
+<p>The last thing to check is the <code class="language-plaintext highlighter-rouge">template_item</code> property, it defines what item (usually a smithing template) you would need in a smithing table to apply the trim to armor. Since we don’t want players to create this armor using the smithing table, we’ll just use an item that’s impossible to get in survival. I used a <strong>barrier</strong> here. <em>(Note: We can tecnically use any item here, since the player won’t we able to actually put it in the smithing table without adding the item to a specific tag)</em></p>
+
+<p>Now we’re done with the easy part, lets move on to the <strong>resource pack</strong>.</p>
+
+<h2 id="3-creating-the-resource-pack">3. Creating the resource pack</h2>
+<p>Creating a resource pack is really similar to a datapack, just do the same steps, but instead of creating a <code class="language-plaintext highlighter-rouge">data</code> folder, name it <code class="language-plaintext highlighter-rouge">assets</code>.
+Now add two folders in the <code class="language-plaintext highlighter-rouge">assets</code> folder, name one just like your namespace in the datapack and name the other one <code class="language-plaintext highlighter-rouge">minecraft</code>. You’re going to need a lot of folders, so just try to recreate this structure:</p>
+
+<ul>
+  <li>assets
+    <ul>
+      <li><em>my_pack</em>
+        <ul>
+          <li>models
+            <ul>
+              <li>item</li>
+            </ul>
+          </li>
+          <li>textures
+            <ul>
+              <li>item</li>
+              <li>trims
+                <ul>
+                  <li>models
+                    <ul>
+                      <li>armor</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>minecraft
+        <ul>
+          <li>atlases</li>
+          <li>models
+            <ul>
+              <li>item</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Again, replace <code class="language-plaintext highlighter-rouge">my_pack</code> with your namespace. Let’s start with adding the textures for our custom armor trims. Navigate to <code class="language-plaintext highlighter-rouge">assets/(your namespace)/textures/trims/models/armor</code>.
+Now you’re going to need two files: The 1st and 2nd layer armor textures. Those files are used to define how the armor looks when worn. You can just recolor the vanilla ones or create your own custom textures. You can find them in the vanilla resource pack under <code class="language-plaintext highlighter-rouge">assets/minecraft/textures/models/armor</code>. Name the first layer <code class="language-plaintext highlighter-rouge">my_armor.png</code> and the second layer <code class="language-plaintext highlighter-rouge">my_armor_leggings.png</code> (replace my_armor with the name of your custom armor). The images <strong>have</strong> to be .png files!</p>
+
+<p>Now we need to add our images to the vanilla texture atlas. A texture atlas is a file that is generated at runtime to make it easier for the game to load textures, by placing all textures on one texture and grabbing a specific region of the atlas when displaying a texture. This is done internally for blocks, items and many other textures. Minecraft doesn’t automatically add our trim textures to the armor trim atlas, so we need to add them manually. Navigate to <code class="language-plaintext highlighter-rouge">assets/minecraft/atlases</code> and create a file named <code class="language-plaintext highlighter-rouge">armor_trims.json</code>.</p>
+
+<p>Add the following content:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"minecraft:paletted_permutations"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"textures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"my_pack:trims/models/armor/my_armor"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"my_pack:trims/models/armor/my_armor_leggings"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"palette_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trims/color_palettes/trim_palette"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"permutations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"quartz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trims/color_palettes/quartz"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"iron"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trims/color_palettes/iron"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"gold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trims/color_palettes/gold"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"diamond"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trims/color_palettes/diamond"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"netherite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trims/color_palettes/netherite"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"redstone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trims/color_palettes/redstone"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"copper"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trims/color_palettes/copper"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"emerald"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trims/color_palettes/emerald"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lapis"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trims/color_palettes/lapis"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amethyst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trims/color_palettes/amethyst"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>Same thing here, you’ll have to replace <code class="language-plaintext highlighter-rouge">my_pack</code> with your namespace and <code class="language-plaintext highlighter-rouge">my_armor</code> with the name of your custom armor. This will tell minecraft to add our textures to the armor trim atlas when it’s generated at runtime.</p>
+
+<h2 id="4-custom-model-data">4. Custom model data</h2>
+<p>Now we’re done adding our custom armor trims. We can give the items themselves custom textures using <strong>custom model data</strong>. If you don’t know how to apply custom model data to items, I’d recommend following <a href="https://www.youtube.com/watch?v=x2QwKFE0aQg">this tutorial by KasaiSora</a>. Make sure to use the name number for every piece of armor!</p>
+
+<h2 id="5-creating-a-recipe">5. Creating a recipe</h2>
+<p>If you want players to be able to craft your new custom armor, you can add a crafting recipe in your datapack!
+Go into the <code class="language-plaintext highlighter-rouge">recipes</code> folder in your datapack and create a new file, just give it the same name as your armor piece (make sure to add the <code class="language-plaintext highlighter-rouge">.json</code> extension).
+Now add the following content:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"minecraft:crafting_shaped"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equipment"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"XXX"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"X X"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"   "</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"X"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"item"</span><span class="p">:</span><span class="w"> </span><span class="s2">"minecraft:copper_ingot"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"minecraft:diamond_helmet"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"components"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"minecraft:custom_model_data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"minecraft:trim"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_pack:my_armor"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"material"</span><span class="p">:</span><span class="w"> </span><span class="s2">"minecraft:quartz"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"show_in_tooltip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"minecraft:item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">text</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Copper Helmet</span><span class="se">\"</span><span class="s2">}"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>This will create a recipe for your custom armor. The <code class="language-plaintext highlighter-rouge">pattern</code> part defines how the items should be placed in the crafting table. I’m using the shape for a helmet here.
+What material the X refers to can be set in the <code class="language-plaintext highlighter-rouge">key</code> section. I used a copper ingot as an example, but you can use anything you want here.
+The <code class="language-plaintext highlighter-rouge">result</code> property defines what item will be crafted out of this recipe. Replace the <code class="language-plaintext highlighter-rouge">id</code> part with the armor piece you’re making the recipe for.
+Make sure to replace the number in <code class="language-plaintext highlighter-rouge">custom_model_data</code> with the one you used in your resource pack.</p>
+
+<p>Also remeber to replace <code class="language-plaintext highlighter-rouge">my_pack</code> and <code class="language-plaintext highlighter-rouge">my_armor</code> again. The <code class="language-plaintext highlighter-rouge">minecraft:trim</code> part defines what armor trim we’re applying to the item. As pattern, we’re using our new custom armor pattern, and for the material we can just use any vanilla one, I recommend using quartz though. The <code class="language-plaintext highlighter-rouge">show_in_tooltip</code> property will prevent the armor trim from showing up in the item tooltip and the <code class="language-plaintext highlighter-rouge">minecraft:item_name</code> property will rename our item from “Diamond Helmet” to “Copper Helmet”. You should replace this name with you armor too.</p>
+
+<h2 id="6-obtaining-using-commands">6. Obtaining using commands</h2>
+<p>If you don’t want your armor to be craftable, you can obtain it using commands. The item data of the command is the same as in the <code class="language-plaintext highlighter-rouge">components</code> section of the recipe file abobe, so just do the same replacements for the values.</p>
+
+<p>This is the command to obtain your custom armor:</p>
+<pre><code class="language-mc-command">/give @s minecraft:diamond_helmet[minecraft:custom_model_data=1,minecraft:trim={pattern:"my_pack:my_armor",material:"minecraft:quartz",show_in_tooltip:false}, minecraft:item_name='{"text":"Copper Helmet"}']
+</code></pre>
+
+<p>Now you’ve created completely custom armor using only a datapack and resource pack, with the power of armor trims!</p>]]></content><author><name>codingcat</name></author><category term="Minecraft" /><category term="datapack" /><category term="minecraft" /><summary type="html"><![CDATA[In this tutorial, I’ll show you all the steps required to create custom armor with just a datapack and resource pack. To make this work, we’re going to use armor trims and custom model data.]]></summary></entry><entry><title type="html">GlowingItems</title><link href="http://localhost:4000/minecraft/2024/04/07/glowing-items-plugin.html" rel="alternate" type="text/html" title="GlowingItems" /><published>2024-04-07T00:00:00+02:00</published><updated>2024-04-07T00:00:00+02:00</updated><id>http://localhost:4000/minecraft/2024/04/07/glowing-items-plugin</id><content type="html" xml:base="http://localhost:4000/minecraft/2024/04/07/glowing-items-plugin.html"><![CDATA[<p>GlowingItems is a rather simple but fully customizable plugin that allows items like torches, lanterns, glowstone and many other to emit light when held in the hand or dropped on the floor. It runs on Spigot, Paper, Purpur and similar server softwares in versions 1.20 - 1.20.4.</p>
 
 <p>You can configure everything about the plugin in the <code class="language-plaintext highlighter-rouge">config.yml</code> file, including items that can glow and which level of light they emit.</p>
 

@@ -12,7 +12,7 @@ banner:
   min_height: "38vh"
   heading_style: "font-size: 4.25em; font-weight: bold;"
 tags: plugin minecraft java
-top: 1
+top: 2
 ---
 
 GlowingItems is a rather simple but fully customizable plugin that allows items like torches, lanterns, glowstone and many other to emit light when held in the hand or dropped on the floor. It runs on Spigot, Paper, Purpur and similar server softwares in versions 1.20 - 1.20.4.
