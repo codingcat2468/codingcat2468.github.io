@@ -213,6 +213,7 @@ To understand them, we'll have a look at the `generated.json` item model file. Y
 ```
 
 The file is basically used to tell the game how generated items should be displayed by default. We can see that it only contains `gui_light`, which is used to specify how the item is lit in the GUI (for example in the inventory) and `display`, which is used to specify all of the display transformations. Note that all of them are technically optional, but should be provided if the position looks weird. The following types of display transformations exist:
+
 | ID/Name | Function |
 | ------- | -------- |
 | thirdperson_righthand | Item in the right hand, in 3rd person |
