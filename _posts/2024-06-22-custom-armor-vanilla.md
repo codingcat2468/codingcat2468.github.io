@@ -12,7 +12,7 @@ banner:
   min_height: "38vh"
   heading_style: "font-size: 4.25em; font-weight: bold;"
 tags: datapack minecraft
-top: 1
+top: 2
 ---
 
 In this tutorial, I'll show you all the steps required to create custom armor with just a datapack and resource pack.
