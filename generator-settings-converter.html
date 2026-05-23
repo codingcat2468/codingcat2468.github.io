@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: black; margin:24px; color: white;">
+
+<head>
+    <title>Generator Settings Converter</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3b5570">
+</head>
+
+<body style="font-family: Arial;">
+    <h1>Generator Settings converter</h1>
+    <p>A very small tool used to convert the superflat presets from within the game</p>
+    <p style="margin-top:-10px;">to the JSON format supported by the <b>server.properties</b> file.</p>
+    <input style="width:350px;margin-top:24px;" type="text" id="input">
+    <button onclick="onConvertPress()">Convert</button>
+    <div style="color:red;display:none;margin-top:12px;" id="error"></div>
+    <div id="code-container" style="display:none;margin-top:40px;padding:8px;background:gray;width:fit-content;border:12px solid rgb(91, 91, 91);border-radius:14px;color:white;font-family:monospace;">
+        <span style="word-wrap:break-word;" id="result"></span>
+        <button onclick="copyResult(this)">Copy</button>
+    </div>
+</body>
+<script>
+    function onConvertPress() {
+        var input = document.getElementById('input').value;
+        try {
+            var result = convertInGameToJson(input);
+            var resultJson = JSON.stringify(result);
+            resultJson = resultJson.replaceAll(":", "\\:");
+            showError(null);
+            document.getElementById('result').innerText = `generator-settings=${resultJson}`;
+            document.getElementById('code-container').style.display = "block";
+        } catch (e) {
+            showError(e instanceof SyntaxError ? e.message : e.toString())
+        }
+    }
+
+    function convertInGameToJson(input) {
+        input = input.replaceAll(" ", "");
+        var semicolonIdx = input.indexOf(';');
+        if ((input.split(';').length - 1) > 1) throw new SyntaxError("Multiple semicolons (;) not supported, use commas (,) to separate layers instead");
+        if (semicolonIdx == -1) throw new SyntaxError("Missing biome specified by <layers>;<namespace:biome>");
+        var biome = input.substring(semicolonIdx + 1, input.length);
+        if (!biome.includes(':')) biome = `minecraft:${biome}`;
+        var layersStr = input.substring(0, semicolonIdx);
+        var layers = layersStr.split(',');
+        if (layers.length < 1 || (layers.length == 1 && !layers[0])) throw new SyntaxError("At least one layer of blocks is required");
+        layerObjects = []
+        for (layerIdx in layers) {
+            var layer = layers[layerIdx];
+            var obj = {}
+            var starIdx = layer.indexOf('*');
+            if (starIdx != -1) {
+                var rawHeight = layer.substring(0, starIdx);
+                var height = parseInt(rawHeight);
+                obj["height"] = height;
+                if (height == NaN || !height) throw new SyntaxError(`Invalid height "${rawHeight}" in layer ${layerIdx}`);
+                layer = layer.substring(starIdx + 1, layer.length);
+            } else obj["height"] = 1;
+            if (!layer.includes(':')) layer = `minecraft:${layer}`;
+            obj["block"] = layer;
+            layerObjects.push(obj);
+        }
+        return {
+            "layers": layerObjects,
+            "biome": biome
+        }
+    }
+
+    function showError(message) {
+        var error = document.getElementById("error");
+        if (message) {
+            message = message.replaceAll('<', '&lt;');
+            message = message.replaceAll('>', '&gt;');
+            error.innerHTML = `<b>Failed to convert:</b> ${message}`;
+        }
+        error.style.display = message ? "block" : "none";
+    }
+
+    function copyResult(thisBtn) {
+        var result = document.getElementById("result").innerText;
+        navigator.clipboard.writeText(result)
+            .then(() => {
+                thisBtn.style.color = "green";
+                thisBtn.innerText = "Copied!";
+            })
+            .catch(() => {
+                thisBtn.style.color = "red";
+                thisBtn.innerText = "Failed to copy!";
+            })
+        setTimeout(() => {
+            thisBtn.style.color = "black";
+            thisBtn.innerText = "Copy";
+        }, 4000);
+    }
+</script>
+
+</html>
